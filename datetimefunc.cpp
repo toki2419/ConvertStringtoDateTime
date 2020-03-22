@@ -28,9 +28,21 @@ int gettime(string s) {
     cout << date << endl;
     return date;
 }
+
+int day_of_week(int d, int m, int y)  
+{  
+    int t[12] = { 0, 3, 2, 5, 0, 3, 
+                       5, 1, 4, 6, 2, 4 };  
+    y -= m < 3;
+    // return [0, 1, ..., 6] with 0 is sunday  
+    return ( y + y / 4 - y / 100 +  
+             y / 400 + t[m - 1] + d) % 7;  
+} 
+
 int main()
 {
     string dt = "2020-03-22 23:48";//use this format
     gettime(dt);
+    cout << dayofweek(22, 3, 2020);
     return 0;
 }
